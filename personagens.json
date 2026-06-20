@@ -1,0 +1,34 @@
+{
+  "ettore": {
+    "discord_id": "370022963837403147",
+    "resumo": "Ettore Agazzi, de Tobaro (Tilea). Nobre tileano, quinto filho da Casa Agazzi, capitão mercenário que fundou a Armada Agazzi após deixar a sombra dos irmãos mais velhos. Orgulhoso, carismático e estrategista, devoto de Myrmidia. Lidera o grupo com senso de honra e lealdade conquistada, busca provar seu valor pela conquista, não pelo nascimento."
+  },
+  "grodnar": {
+    "discord_id": "232872556971950082",
+    "resumo": "Grodnar Goldhand, de Ubersreik. Anão do Clã Goldhand que abandonou a tradição familiar de lapidação de gemas para viver de luta, bebida e aventura. Direto, brusco e de bom coração, desconfia de florestas ('pedras são honestas, árvores mentem'). Forte lealdade aos amigos, principalmente Rocco."
+  },
+  "rocco": {
+    "discord_id": "693962506573578270",
+    "resumo": "Rocco Niekisch, Piromante de Ubersreik. Filho de ferreiros, fugiu de casa após incendiar parte de uma taverna e se tornou aprendiz na Escola Aqshy (magia do fogo). Impulsivo, ambicioso e orgulhoso, busca glória e poder através do fogo. Apaixonado por Marial Eduarda 'Sola' Solacruz, próximo de Sarah Everstein e Grodnar."
+  },
+  "sarah": {
+    "discord_id": "258387569828560897",
+    "resumo": "Sarah Everstein, Sacerdotisa de Shallya. Criada no Templo de Shallya após a mãe sucumbir à Febre Pálida; amiga de infância de Solacruz. Curandeira gentil, fiel e dedicada, forma um trio inseparável com Sola e Rocco — a curandeira, a guardiã e o mago do fogo."
+  },
+  "solacruz": {
+    "discord_id": "338386997897068546",
+    "resumo": "Marial Eduarda 'Sola' del Solacruz, Guardiã da Ordem Flamejante. Cresceu na pobreza ao lado de Sarah Everstein, tornou-se guarda disciplinada e observadora na Universidade de Fogo, onde conheceu Rocco. Firme, protetora e desconfiada por natureza, esconde insegurança sob a marca de uma cicatriz antiga. Envolvida romanticamente com Rocco."
+  },
+  "helverth": {
+    "discord_id": "COLOQUE_O_ID_NUMERICO_DO_DISCORD_AQUI",
+    "resumo": "Helverth Volkmar, de Carroburg (Middenland). Único sobrevivente do massacre de sua família nobre, criado em segredo como soldado órfão por Markus Krieger. Disciplinado, silencioso e observador, espera o momento certo para desmascarar a conspiração que destruiu os Volkmar. Soldado firme na linha de frente do grupo."
+  },
+  "jehan": {
+    "discord_id": "370022963837403147",
+    "resumo": "Jehan Faugrive, de Bretonnia. Mais jovem dos cinco filhos da Casa Faugrive, criado pela mãe com histórias do Graal. Cavaleiro Errante idealista e devoto, lema 'Olhos no Céu, Honra no Coração'. Busca renome e a purificação espiritual de tornar-se um Cavalheiro do Graal."
+  },
+  "konrad": {
+    "discord_id": "COLOQUE_O_ID_NUMERICO_DO_DISCORD_AQUI",
+    "resumo": "Konrad, caçador de Altdorf. Filho bastardo criado nas ruas, marcado por uma profecia do Templo de Morr ainda criança. Rastreador silencioso e perceptivo, criado por um tio eremita em Reikwald. Evita cidades e crianças, assombrado pelo pressentimento de um destino ligado à morte."
+  }
+}
