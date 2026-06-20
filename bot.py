@@ -1,9 +1,7 @@
-# version 1.0.0
 # author: @ricardopiloto
 # description: Bot de RPG de mesa para o servidor 1noDado
 # license: MIT
-# date: 2026-06-19
-# version: 1.0.0
+# version: 1.2.0
 import discord
 import aiohttp
 import json
@@ -83,7 +81,7 @@ def montar_lista_personagens_da_mesa():
         return ""
 
     return (
-        "A ARMADA AGAZZI é um grupo de mercenários fundado por Ettore Agazzi. "
+        "A ARMADA AGAZZI (chamada por alguns membros de 'Rataria de Prata') é um grupo de mercenários fundado por Ettore Agazzi. "
         "Os membros atuais do grupo são:\n" + "\n".join(linhas)
     )
 

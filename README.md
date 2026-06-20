@@ -1,5 +1,7 @@
 # Bertroldo — Bot de RPG para Discord
 
+> Versão atual: **1.2.1** — veja o [CHANGELOG](CHANGELOG.md) para o histórico completo de alterações.
+
 Bot de assistência para mesas de RPG, especializado em **Warhammer Fantasy Roleplay 4e** e outros sistemas. Roda no servidor **1noDado** e conhece a campanha da **Armada Agazzi**.
 
 ---
