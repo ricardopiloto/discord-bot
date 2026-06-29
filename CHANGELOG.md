@@ -6,6 +6,22 @@ Versionamento segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.4.0] - 2026-06-29
+
+### Adicionado
+- Documentação completa do sistema **RAG** no README (ChromaDB, `conhecimento/`, reindexação automática)
+- Seção de versionamento no README com referência ao CHANGELOG
+
+### Alterado
+- README reestruturado: árvore de arquivos atualizada, instruções de `venv`/`requirements.txt`, exemplos de uso com regras e lore
+- Corrigido exemplo JSON corrompido na seção de personagens
+
+
+## [1.3.0] - 2026-06-29
+
+### Adicionado
+- Base de regras WFRP 4e em `conhecimento/regras/` — 16 arquivos com mecânicas centrais do livro base (Vantagem, superioridade numérica, transferência via Liderança, combate, magia, cura, testes, dano, condições etc.)
+
 ## [1.2.1] - 2026-06-20
 
 ### Adicionado

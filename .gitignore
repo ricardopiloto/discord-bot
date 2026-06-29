@@ -427,3 +427,12 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Environment variables
+.env
+# ChromaDB data
+chroma_data/
+# Python cache
+__pycache__/
+# Virtual environment
+venv/

@@ -1,7 +1,8 @@
 # author: @ricardopiloto
 # description: Bot de RPG de mesa para o servidor 1noDado
 # license: MIT
-# version: 1.2.0
+# version: 1.4.0
+import rag
 import discord
 import aiohttp
 import json
@@ -9,8 +10,10 @@ import re
 import os
 from collections import defaultdict
 from dotenv import load_dotenv
+from discord.ext import tasks
 
 load_dotenv()
+rag.reindexar_se_necessario()
 
 # =============================================
 # Configurações
@@ -136,6 +139,9 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
+@tasks.loop(minutes=10)
+async def reindexar_periodicamente():
+    rag.reindexar_se_necessario()
 
 async def chamar_deepseek(mensagens):
     headers = {
@@ -156,6 +162,7 @@ async def chamar_deepseek(mensagens):
 @client.event
 async def on_ready():
     print(f"Bot conectado como {client.user}")
+    reindexar_periodicamente.start()
 
 
 @client.event
@@ -236,10 +243,24 @@ Use esse contexto apenas para guiar o TOM e o CONTEÚDO da resposta (ex: lembrar
 CONTEXTO DO JOGADOR ATUAL (uso interno seu, não para repetir literalmente):
 A pessoa falando com você agora é {message.author.display_name} no Discord. Não há um personagem de RPG associado a esse usuário ainda. NÃO mencione o nome de usuário na resposta a menos que isso surja naturalmente da conversa — responda normalmente, como faria com qualquer amigo de mesa."""
 
+    # Busca semântica na base de conhecimento (regras de sistema + lore da campanha).
+    # Usa conteudo_para_ia (já com o reforço anti-injection, se houver) como query,
+    # já que é o texto que efetivamente representa a intenção da mensagem para a IA.
+    contexto_conhecimento = rag.buscar_contexto(conteudo_para_ia, top_k=4)
+    if contexto_conhecimento:
+        bloco_conhecimento = f"""
+
+CONHECIMENTO DE REGRAS E LORE RELEVANTE PARA ESTA MENSAGEM (uso interno seu, não para repetir literalmente nem citar como "fonte"):
+{contexto_conhecimento}
+
+Use esse conhecimento apenas se for relevante para responder à mensagem do jogador. Incorpore naturalmente à sua fala, no seu estilo de sempre — nunca cite isso como uma "base de dados" ou liste como referência."""
+    else:
+        bloco_conhecimento = ""
+
     mensagens = [
         {
             "role": "system",
-            "content": SYSTEM_PROMPT + "\n\n" + montar_lista_personagens_da_mesa() + contexto_personagem
+            "content": SYSTEM_PROMPT + "\n\n" + montar_lista_personagens_da_mesa() + bloco_conhecimento + contexto_personagem
         }
     ] + historico_para_envio
 
