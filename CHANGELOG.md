@@ -6,6 +6,12 @@ Versionamento segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.5.1] - 2026-06-29
+
+### Alterado
+- Lore de aventuras refeito: capítulos dispersos em `conhecimento/lore/aventuras/acontecido/` e `planejado/` substituídos por um único arquivo consolidado — `conhecimento/lore/aventuras/Resumo da Campanha.md` (Capítulos I a VII, narrativa Eber Saltbock)
+- README atualizado com o novo caminho da base de aventuras
+
 ## [1.4.0] - 2026-06-29
 
 ### Adicionado

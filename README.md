@@ -1,6 +1,6 @@
 # Bertroldo — Bot de RPG para Discord
 
-> Versão atual: **1.4.0** — veja o [CHANGELOG](CHANGELOG.md) para o histórico completo de alterações.
+> Versão atual: **1.5.1** — veja o [CHANGELOG](CHANGELOG.md) para o histórico completo de alterações.
 
 Bot de assistência para mesas de RPG, especializado em **Warhammer Fantasy Roleplay 4e** e outros sistemas. Roda no servidor **1noDado** e conhece a campanha da **Armada Agazzi**.
 
@@ -53,7 +53,9 @@ Basta criar ou editar arquivos `.md` em `conhecimento/`. Na próxima inicializa�
 
 **Regras de sistema** → `conhecimento/regras/` (ex.: `vantagem.md`, `cura-em-combate.md`)
 
-**Lore da campanha** → `conhecimento/lore/` (PJs, NPCs, locais, capítulos de aventura)
+**Lore da campanha** → `conhecimento/lore/` (PJs, NPCs, locais)
+
+**Aventuras jogadas** → `conhecimento/lore/aventuras/Resumo da Campanha.md` (registro narrativo consolidado dos Capítulos I a VII)
 
 Cada arquivo pode usar frontmatter YAML com `tags` para organização:
 
