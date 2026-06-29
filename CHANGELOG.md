@@ -6,6 +6,15 @@ Versionamento segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.5.2] - 2026-06-29
+
+### Adicionado
+- `rag.py`: remoção automática de chunks órfãos quando arquivos `.md` são apagados de `conhecimento/` (`_remover_arquivos_obsoletos`)
+- README: seção **Forçar atualização do RAG após deploy** com três opções (reiniciar, rebuild, reindex manual)
+
+### Alterado
+- README: instruções de deploy atualizadas — reiniciar o bot já limpa arquivos removidos; rebuild completo reservado para índice corrompido
+
 ## [1.5.1] - 2026-06-29
 
 ### Alterado

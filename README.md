@@ -1,6 +1,6 @@
 # Bertroldo — Bot de RPG para Discord
 
-> Versão atual: **1.5.1** — veja o [CHANGELOG](CHANGELOG.md) para o histórico completo de alterações.
+> Versão atual: **1.5.2** — veja o [CHANGELOG](CHANGELOG.md) para o histórico completo de alterações.
 
 Bot de assistência para mesas de RPG, especializado em **Warhammer Fantasy Roleplay 4e** e outros sistemas. Roda no servidor **1noDado** e conhece a campanha da **Armada Agazzi**.
 
@@ -69,6 +69,61 @@ sistema: Warhammer Fantasy Roleplay 4ª Edição
 fonte: Livro Base (Core Rulebook)
 ---
 ```
+
+### Forçar atualização do RAG após deploy
+
+O índice fica em `chroma_data/`. Após um deploy com mudanças em `conhecimento/`, use uma das opções abaixo.
+
+#### Opção 1 — Reiniciar o bot (recomendado)
+
+Na subida, o bot chama `reindexar_se_necessario()`, que processa arquivos **novos ou alterados** e **remove do índice** arquivos que não existem mais em disco:
+
+```bash
+cd /opt/apps/discord-bot   # ajuste para o caminho do seu servidor
+sudo systemctl restart discord-bot   # ou o comando que você usa para subir o bot
+```
+
+Se não usar systemd, pare o processo e suba de novo:
+
+```bash
+./venv/bin/python bot.py
+```
+
+#### Opção 2 — Rebuild completo (índice corrompido)
+
+Só necessário se o índice estiver inconsistente ou corrompido. Para deploys normais (incluindo remoção de arquivos), a **Opção 1** basta:
+
+```bash
+cd /opt/apps/discord-bot
+rm -rf chroma_data/
+./venv/bin/python bot.py
+# ou: sudo systemctl restart discord-bot
+```
+
+O ChromaDB recria `chroma_data/` do zero na próxima inicialização.
+
+#### Opção 3 — Reindexar sem reiniciar o bot
+
+Útil quando o bot já está no ar após um deploy:
+
+```bash
+cd /opt/apps/discord-bot
+source venv/bin/activate
+python -c "import rag; rag.reindexar_se_necessario()"
+```
+
+O bot também reindexa sozinho a cada **10 minutos**, mas após deploy é mais seguro reiniciar ou rodar o comando acima.
+
+#### Conferir se funcionou
+
+Na inicialização ou ao rodar a reindexação manual, o terminal deve exibir linhas como:
+
+```
+[RAG] Reindexado: lore/aventuras/Resumo da Campanha.md (12 chunks)
+[RAG] Removido do índice (arquivo não existe mais): lore/aventuras/acontecido/...
+```
+
+Se nada aparecer, os hashes já estavam em dia. Se o índice parecer inconsistente, use a **Opção 2**.
 
 ---
 
@@ -161,7 +216,7 @@ O bot responde apenas quando **mencionado** (`@Bertroldo`) ou em **DM**.
 |---------------|-----------|
 | `!recarregar` | Recarrega o `personagens.json` sem reiniciar o bot. Envie mencionando o bot ou em DM. |
 
-> Para atualizar a base RAG (`conhecimento/`), basta editar os arquivos — a reindexação é automática.
+> Para atualizar a base RAG (`conhecimento/`), veja [Forçar atualização do RAG após deploy](#forçar-atualização-do-rag-após-deploy).
 
 ---
 

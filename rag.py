@@ -40,15 +40,35 @@ def _listar_arquivos_md(diretorio):
                 arquivos.append(os.path.join(raiz, nome))
     return arquivos
 
+def _remover_arquivos_obsoletos(caminhos_relativos_atuais):
+    """Remove do índice qualquer arquivo que foi indexado anteriormente
+    mas não existe mais em disco (foi apagado ou movido)."""
+    todos_metadados = colecao.get()["metadatas"]
+    if not todos_metadados:
+        return
+
+    arquivos_indexados = {m["arquivo"] for m in todos_metadados}
+    arquivos_removidos = arquivos_indexados - caminhos_relativos_atuais
+
+    for caminho_relativo in arquivos_removidos:
+        existentes = colecao.get(where={"arquivo": caminho_relativo})
+        if existentes["ids"]:
+            colecao.delete(ids=existentes["ids"])
+            print(f"[RAG] Removido do índice (arquivo não existe mais): {caminho_relativo}")
+
 def reindexar_se_necessario():
     """Verifica todos os arquivos em conhecimento/ e reindexa apenas
     os que mudaram (ou são novos), comparando hash com o que já está
-    armazenado nos metadados do ChromaDB."""
+    armazenado nos metadados do ChromaDB. Também remove do índice
+    qualquer arquivo que foi apagado do disco desde a última execução."""
     if not os.path.isdir(CONHECIMENTO_DIR):
         os.makedirs(CONHECIMENTO_DIR, exist_ok=True)
         return
 
     arquivos = _listar_arquivos_md(CONHECIMENTO_DIR)
+    caminhos_relativos_atuais = {os.path.relpath(c, CONHECIMENTO_DIR) for c in arquivos}
+
+    _remover_arquivos_obsoletos(caminhos_relativos_atuais)
 
     for caminho in arquivos:
         hash_atual = _hash_arquivo(caminho)

@@ -1,7 +1,7 @@
 # author: @ricardopiloto
 # description: Bot de RPG de mesa para o servidor 1noDado
 # license: MIT
-# version: 1.5.1
+# version: 1.5.2
 import rag
 import discord
 import aiohttp
